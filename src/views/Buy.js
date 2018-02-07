@@ -14,17 +14,19 @@ class Buy extends Component {
         return(
             <div>
                 <h1>Buy ShintoCoins</h1>
-                <p>Current ShintoCoin Value:</p>
-                <p>Number of ShintoCoins Owned:</p>
+                <p>Current ShintoCoin Value: <strong>${this.props.coinPrice}</strong></p>
+                <p>Number of ShintoCoins Owned: <strong>{this.props.acctBal}</strong></p>
                 <form onSubmit={
                     (e) => {
                         e.preventDefault()
-                        this.props.appBuyCoin()}}>
+                        this.props.appBuyCoin(this.state.input)
+                        this.setState({input: ''})
+                    }}>
                     <div className='row'>
-                        <div className='columns'>
+                        <div className='small-12 medium-6 columns'>
                             <div className='md-text-field with-floating-label'>
-                                <input type='text' id='buyInput' value={this.state.input} onInput={(e) => (this.setState({ input: e.target.value }))} />
-                                <label htmlFor='buyInput'>number</label>
+                                <input type='number' id='buyInput' value={this.state.input} onInput={(e) => (this.setState({ input: e.target.value }))} required />
+                                <label htmlFor='buyInput'>Number of Coins</label>
                                 <button>Buy</button>
                             </div>
                         </div>
@@ -38,13 +40,15 @@ class Buy extends Component {
 
 const getStateFromReduxPassToAppComponentAsProps = (state) => {
     return {
+        coinPrice: state.coinPrice,
+        acctBal: state.acctBal
     }
 }
 
 const getDispatchFromReduxToAppComponentAsProps = (dispatch) => {
     return {
-        appBuyCoin(){
-            dispatch(addCoin())
+        appBuyCoin(coins){
+            dispatch(addCoin(coins))
         }
     }
 }

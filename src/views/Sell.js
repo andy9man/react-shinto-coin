@@ -11,20 +11,23 @@ class Sell extends Component {
         }
     }
     render(){
+        const {coinPrice, acctBal} = this.props;
         return(
             <div>
                 <h1>Sell ShintoCoins</h1>
-                <p>Current ShintoCoin Value:</p>
-                <p>Number of ShintoCoins Owned:</p>
+                <p>Current ShintoCoin Value: <strong>${coinPrice}</strong></p>
+                <p>Number of ShintoCoins Owned: <strong>{acctBal}</strong></p>
                 <form onSubmit={
                     (e) => {
                         e.preventDefault()
-                        this.props.appSellCoin()
+                        this.state.input < acctBal && this.props.appSellCoin(this.state.input)
+                        this.setState({input: ''})
                     }}>
                     <div className='row'>
-                        <div className='columns'>
-                            <div className='md-text-field with-floating-label'>                        <label htmlFor='sellInput'>number</label>
-                                <input type='text' id='sellInput' value={this.state.input} onInput={(e) => (this.setState({ input: e.target.value }))} />
+                        <div className='small-12 medium-6 columns'>
+                            <div className='md-text-field with-floating-label'>
+                                <input type='number' id='sellInput' value={this.state.input} onInput={(e) => (this.setState({ input: e.target.value }))} />
+                                <label htmlFor='sellInput'>Number to Sell</label>
                                 <button>Sell</button>
                             </div>
                         </div>
@@ -38,13 +41,15 @@ class Sell extends Component {
 
 const getStateFromReduxPassToAppComponentAsProps = (state) => {
     return {
+        coinPrice: state.coinPrice,
+        acctBal: state.acctBal
     }
 }
 
 const getDispatchFromReduxToAppComponentAsProps = (dispatch) => {
     return {
-        appSellCoin(){
-            dispatch(sellCoin())
+        appSellCoin(coins){
+            dispatch(sellCoin(coins))
         }
     }
 }

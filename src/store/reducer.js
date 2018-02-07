@@ -23,25 +23,33 @@ class Ledger {
 }
 
 export const reducer = (state = initialState, action) => {
-    
+    let newCoinPrice, newAcctBal, ledger;
     switch(action.type){
         case ADD_COIN:
+            console.log("Purchasing some coins...");
+            newCoinPrice = state.coinPrice + 1;
+            newAcctBal = state.acctBal + parseInt(action.payload, 10);
+            ledger = new Ledger('Bought', action.payload, state.coinPrice);
             return{
-                
+                ...state, coinPrice: newCoinPrice, acctBal: newAcctBal, ledger: state.ledger.concat([ledger])
             }
         case SELL_COIN:
+            console.log("Selling some coins...");
+            newCoinPrice = state.coinPrice === 0 ? 0 : state.coinPrice - 1;
+            newAcctBal = state.acctBal - parseInt(action.payload, 10);
+            ledger = new Ledger('Sold', action.payload, state.coinPrice);
             return{
-
+                ...state, coinPrice: newCoinPrice, acctBal: newAcctBal, ledger: state.ledger.concat([ledger])
             }
         case MINE_COIN:
-            console.log(state.coinPrice)
-            const newCoinPrice = state.coinPrice + 1
-            const newAcctBal = state.acctBal + 1
-            let ledger = new Ledger('Mined', 1, state.coinPrice)
+            console.log("Mining some coins...")
+            newCoinPrice = state.coinPrice + 1
+            newAcctBal = state.acctBal + 1
+            ledger = new Ledger('Mined', 1, state.coinPrice)
             return{
-                ...state, coinPrice: newCoinPrice, acctBal: newAcctBal, ledger: state.ledger.concat([ledger]) 
+                ...state, coinPrice: newCoinPrice, acctBal: newAcctBal, ledger: state.ledger.concat([ledger])
             }
-        default: 
+        default:
             return state
     }
 

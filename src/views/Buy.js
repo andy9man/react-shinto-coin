@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
+import { addCoin } from '../store/actions';
 
 class Buy extends Component {
     constructor(props){
@@ -14,7 +16,10 @@ class Buy extends Component {
                 <h1>Buy ShintoCoins</h1>
                 <p>Current ShintoCoin Value:</p>
                 <p>Number of ShintoCoins Owned:</p>
-                <form>
+                <form onSubmit={
+                    (e) => {
+                        e.preventDefault()
+                        this.props.appBuyCoin()}}>
                     <div className='row'>
                         <div className='columns'>
                             <div className='md-text-field with-floating-label'>
@@ -30,4 +35,18 @@ class Buy extends Component {
     }
 }
 
-export default Buy
+
+const getStateFromReduxPassToAppComponentAsProps = (state) => {
+    return {
+    }
+}
+
+const getDispatchFromReduxToAppComponentAsProps = (dispatch) => {
+    return {
+        appBuyCoin(){
+            dispatch(addCoin())
+        }
+    }
+}
+
+export default connect(getStateFromReduxPassToAppComponentAsProps, getDispatchFromReduxToAppComponentAsProps)(Buy)

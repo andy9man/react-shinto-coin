@@ -19,7 +19,6 @@ class Mine extends Component {
                 <form onSubmit={
                     (e) => {
                         e.preventDefault()
-                        console.log(parseInt(this.state.input,10))
                         parseInt(this.state.input,10) === 13 && this.props.appMineCoin()}}>
                     <input type='text' name='mineInput' value={this.state.input} onInput={(e) => (this.setState({input: e.target.value}))}/>
                     <button>Mine the ShintoCoin</button>

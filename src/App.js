@@ -3,6 +3,9 @@ import './App.css';
 import {Navigation} from './components/nav';
 import Home from './views/Home';
 import Mine from './views/Mine';
+import Buy from './views/Buy';
+import Sell from './views/Sell';
+import Ledger from './views/Ledger';
 import {
   Switch,
   Route,
@@ -21,6 +24,9 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/mine' component={Mine} />
+          <Route exact path='/buy' component={Buy} />
+          <Route exact path='/sell' component={Sell} />
+          <Route exact path='/ledger' component={Ledger} />
         </Switch>
        
       </div>

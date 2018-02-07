@@ -7,9 +7,9 @@ export const Navigation = props => {
     <ul className="heading-nav padding-bottom-medium">
         <CustomNav to='/' label='Home' generalClassName="heading-nav-entry" activeOnlyWhenExact={true} />
         <CustomNav to='/mine' label='Mine Coins' generalClassName="heading-nav-entry" activeOnlyWhenExact={true} />
-        {/* <CustomNav label='Buy Coins'/>
-        <CustomNav label='Sell Coins' />
-        <CustomNav label='Browse Ledger'/> */}
+        <CustomNav to='/buy' label='Buy Coins' generalClassName="heading-nav-entry" activeOnlyWhenExact={true} />
+        <CustomNav to='/sell' label='Sell Coins' generalClassName="heading-nav-entry" activeOnlyWhenExact={true} />
+        <CustomNav to='/ledger' label='Browse Ledger' generalClassName="heading-nav-entry" activeOnlyWhenExact={true} />
     </ul>
 </nav>
 

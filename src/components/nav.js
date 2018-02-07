@@ -1,7 +1,7 @@
 import React from 'react';
 import {FreakingAwesomeNavLink as CustomNav} from './helper'
 
-const Navigation = props => {
+export const Navigation = props => {
     return (
 <nav>
     <CustomNav label='Home'/>

@@ -4,11 +4,11 @@ import {FreakingAwesomeNavLink as CustomNav} from './helper'
 export const Navigation = props => {
     return (
 <nav>
-    <CustomNav label='Home'/>
-    <CustomNav label='Coins'/>
-    <CustomNav label='Buy Coins'/> 
+    <CustomNav to='/' label='Home'/>
+    <CustomNav to='/mine' label='Mine Coins'/>
+    {/* <CustomNav label='Buy Coins'/> 
     <CustomNav label='Sell Coins' />
-    <CustomNav label='Browse Ledger'/>
+    <CustomNav label='Browse Ledger'/> */}
 </nav>
 
     )

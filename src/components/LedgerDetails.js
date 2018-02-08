@@ -1,12 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
-const LegerDetails = props => {
+export const LedgerDetails = props => {
+    const {match: {params: {id}}}= props
+    const item = props.ledger.find((item) => { return item.id==id})
+    console.log('inledgerdetails')
+    console.log(props.ledger)
     return (
         <div>
-            Something goes here...
+            <p> Transaction <b># {id} </b></p>
+
+            <p><b>{item.action} {item.amount} </b> ShintoCoin</p>  
         </div>
 
     )
 }
+const getStateFromReduxPassToAppComponentAsProps = (state) => {
+    return {
+        ledger: state.ledger,
+    }
+}
 
-export default LegerDetails;
+export default connect(getStateFromReduxPassToAppComponentAsProps)(LedgerDetails)
+

@@ -6,9 +6,11 @@ import {
 } from 'react-router-dom';
 import {LedgerDetails as LedgerDetailsComponent} from '../components/LedgerDetails';
 
+
 const Transaction = (props) => {
     const {ledger} = props;
     const ledgerItemsExist = ledger > 0;
+    console.log(props)
     return(
         <div>
             <div>
@@ -20,10 +22,13 @@ const Transaction = (props) => {
 
                     <div>
                         {
+
                             // ledgerItemsExist ?
                             //     <Route path={`${props.match.path}/:id`} component={LederDetailsComponent} />
                             // :
                             //     <Redirect to="/ledger" />
+                            <Route path={`${props.match.path}/:id`} component={LedgerDetailsComponent} />
+                              
                         }
                     </div>
                 </div>

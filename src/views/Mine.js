@@ -7,22 +7,49 @@ class Mine extends Component {
         super(props)
 
         this.state = {
-            input: ''
+            input: '',
+            error: undefined
         }
     }
     render(){
         return(
             <div>
                 <h1>Mine ShintoCoins</h1>
-                <p>Here you can mine ShintoCoins by being the first to solve the algorithm:</p>
-                <p>What is the 7th Fibonacci sequence number?</p>
-                <form onSubmit={
-                    (e) => {
-                        e.preventDefault()
-                        parseInt(this.state.input,10) === 13 && this.props.appMineCoin()}}>
-                    <input type='text' name='mineInput' value={this.state.input} onInput={(e) => (this.setState({input: e.target.value}))}/>
-                    <button>Mine the ShintoCoin</button>
-                </form>
+
+                <div className="margin-vert-large margin-horiz-large">
+                    <p>Here you can mine ShintoCoins by being the first to solve the algorithm:</p>
+
+                    <form onSubmit={
+                        (e) => {
+                            e.preventDefault();
+                            let error = undefined;
+                            parseInt(this.state.input, 10) === 13 ? this.props.appMineCoin() : error = "Your answer is incorrect";
+                            this.setState({input: '', error: error});
+                        }
+                    }>
+                        <div className="row">
+                            <div className="small-12 medium-8 large-6 columns">
+                                <div className="md-text-field with-floating-label">
+                                    <input
+                                        type="text"
+                                        id="mineInput"
+                                        value={this.state.input}
+                                        className={this.state.error && "has-error"}
+                                        onInput={(e) => (
+                                            this.setState({input: e.target.value})
+                                        )}
+                                        required
+                                    />
+                                    <label htmlFor="mineInput">
+                                        What is the 7th Fibonacci sequence number?
+                                    </label>
+                                    <span className="error">{this.state.error}</span>
+                                    <button>Mine</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }

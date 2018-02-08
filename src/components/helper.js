@@ -1,5 +1,5 @@
-import React from 'react'
-import {Link,Route} from 'react-router-dom'
+import React from 'react';
+import {Link,Route} from 'react-router-dom';
 
 export const FreakingAwesomeNavLink = ( {label, to, activeOnlyWhenExact, generalClassName} ) => {
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom';
 
 const Ledger = (props) => {
     const {ledger} = props;
@@ -10,15 +11,15 @@ const Ledger = (props) => {
                 <p>Here you can browse all ShintoCoin transactions.</p>
             </div>
             <div className="row">
-                <div className="small-12 medium-8 columns">
+                <div className="small-12 medium-10 large-8 columns">
                     <h3>ShintoCoin Ledger</h3>
                     <table className="table">
                         <thead>
                             <tr>
-                                <th width="500">Action</th>
-                                <th width="100" className="text-right">Amount</th>
-                                <th width="400">Value</th>
-                                <th>&nbsp;</th>
+                                <th width="30%">Action</th>
+                                <th width="30%" className="text-right">Amount</th>
+                                <th width="25%" className="text-right">Value</th>
+                                <th width="15%">&nbsp;</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,9 +28,16 @@ const Ledger = (props) => {
                                     ledger.map( item => (
                                         <tr key={item.id}>
                                             <td>{item.action}</td>
-                                            <td>{item.amount}</td>
-                                            <td>{item.value}</td>
-                                            <td><button id={item.id}>Details</button></td>
+                                            <td className="text-right">{item.amount}</td>
+                                            <td className="text-right margin-right-small">${item.value}</td>
+                                            <td className="text-right">
+                                                <Link to={`/transaction/${item.id}`}>
+                                                    <button
+                                                        id={item.id}
+                                                        className="margin-vert-small"
+                                                    >Details</button>
+                                                </Link>
+                                            </td>
                                         </tr>
                                     ))
                             }
@@ -37,7 +45,6 @@ const Ledger = (props) => {
                     </table>
                 </div>
             </div>
-
 
         </div>
     )

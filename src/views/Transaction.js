@@ -4,7 +4,7 @@ import {
     Route,
     Redirect
 } from 'react-router-dom';
-import {LedgerDetails as LedgerDetailsComponent} from '../components/LedgerDetails';
+import LedgerDetails from '../components/LedgerDetails';
 
 
 const Transaction = (props) => {
@@ -27,8 +27,8 @@ const Transaction = (props) => {
                             //     <Route path={`${props.match.path}/:id`} component={LederDetailsComponent} />
                             // :
                             //     <Redirect to="/ledger" />
-                            <Route path={`${props.match.path}/:id`} component={LedgerDetailsComponent} />
-                              
+                            <Route path={`${props.match.path}/:id`} component={LedgerDetails} />
+
                         }
                     </div>
                 </div>

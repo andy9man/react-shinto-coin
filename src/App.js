@@ -9,8 +9,7 @@ import Ledger from './views/Ledger';
 import Transaction from './views/Transaction';
 import {
   Switch,
-  Route,
-  BrowserRouter
+  Route
 } from 'react-router-dom';
 import logo from './shintocoin.jpeg'
 
@@ -18,7 +17,6 @@ import logo from './shintocoin.jpeg'
 class App extends Component {
   render() {
     return (
-     <BrowserRouter>
       <div className="App">
         <div className="margin-horiz-large">
           <div className="small-12 medium-10">
@@ -52,7 +50,6 @@ class App extends Component {
           </div>
         </div>
       </div>
-      </BrowserRouter>
     );
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import {Link} from 'react-router-dom';
+import {numberWithCommas} from '../components/helper';
 
 const Ledger = (props) => {
     const {ledger} = props;
@@ -28,8 +29,8 @@ const Ledger = (props) => {
                                     ledger.map( item => (
                                         <tr key={item.id}>
                                             <td>{item.action}</td>
-                                            <td className="text-right">{item.amount}</td>
-                                            <td className="text-right margin-right-small">${item.value}</td>
+                                            <td className="text-right">{numberWithCommas(item.amount)}</td>
+                                            <td className="text-right margin-right-small">${numberWithCommas(item.value)}</td>
                                             <td className="text-right">
                                                 <Link to={`/transaction/${item.id}`}>
                                                     <button

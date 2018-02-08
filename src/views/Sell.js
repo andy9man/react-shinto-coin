@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
 import { sellCoin } from '../store/actions';
+import { numberWithCommas } from '../components/helper';
 
 class Sell extends Component {
     constructor(props){
@@ -19,7 +20,7 @@ class Sell extends Component {
 
                 <div className="margin-vert-large margin-horiz-large">
                     <p>Current ShintoCoin Value: <strong>${coinPrice}</strong></p>
-                    <p>Number of ShintoCoins Owned: <strong>{acctBal}</strong></p>
+                    <p>Number of ShintoCoins Owned: <strong>{numberWithCommas(acctBal)}</strong></p>
                     <form onSubmit={
                         (e) => {
                             e.preventDefault();
